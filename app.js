@@ -1,4 +1,4 @@
-const SCRIPT_URL = "PASTE_GOOGLE_SCRIPT_URL_HERE";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxr83x17dJnn5AhkYOiBRC-dAZ-czzVYN8cC4OVVgbi-Oz7pgJQ_8Gk8Vq3voZUrKGVmg/exec";
 
 const form = document.getElementById("uniformForm");
 const message = document.getElementById("message");
