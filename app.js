@@ -1,59 +1,91 @@
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxr83x17dJnn5AhkYOiBRC-dAZ-czzVYN8cC4OVVgbi-Oz7pgJQ_8Gk8Vq3voZUrKGVmg/exec";
 
-const form = document.getElementById("uniformForm");
-const message = document.getElementById("message");
-const itemSelect = document.getElementById("itemRequested");
-const otherItemContainer = document.getElementById("otherItemContainer");
-const otherItemInput = document.getElementById("otherItem");
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("uniformForm");
+  const itemRequested = document.getElementById("itemRequested");
+  const otherWrap = document.getElementById("otherItemWrap");
+  const otherItem = document.getElementById("otherItem");
+  const statusMessage = document.getElementById("statusMessage");
 
-itemSelect.addEventListener("change", function () {
-  if (this.value === "Other") {
-    otherItemContainer.classList.remove("hidden");
-    otherItemInput.required = true;
-  } else {
-    otherItemContainer.classList.add("hidden");
-    otherItemInput.required = false;
-    otherItemInput.value = "";
-  }
-});
-
-form.addEventListener("submit", async function (e) {
-  e.preventDefault();
-  message.textContent = "";
-
-  let item = itemSelect.value;
-  if (item === "Other") {
-    item = otherItemInput.value.trim();
+  function toggleOtherField() {
+    if (itemRequested.value === "Other") {
+      otherWrap.style.display = "block";
+      otherItem.required = true;
+    } else {
+      otherWrap.style.display = "none";
+      otherItem.required = false;
+      otherItem.value = "";
+    }
   }
 
-  const data = {
-    employeeName: document.getElementById("employeeName").value.trim(),
-    employeeEmail: document.getElementById("employeeEmail").value.trim(),
-    itemRequested: item,
-    itemSize: document.getElementById("itemSize").value.trim(),
-    reasonForReplacement: document.getElementById("reasonForReplacement").value.trim()
-  };
+  itemRequested.addEventListener("change", toggleOtherField);
+  toggleOtherField();
 
-  try {
-    const params = new URLSearchParams(data);
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-    const res = await fetch(SCRIPT_URL, {
-      method: "POST",
-      body: params
+    statusMessage.textContent = "Submitting...";
+    statusMessage.style.color = "#333";
+
+    const employeeName = document.getElementById("employeeName").value.trim();
+    const employeeEmail = document.getElementById("employeeEmail").value.trim();
+    const selectedItem = itemRequested.value;
+    const otherItemValue = otherItem.value.trim();
+    const finalItemRequested =
+      selectedItem === "Other" ? otherItemValue : selectedItem;
+    const size = document.getElementById("size").value.trim();
+    const reason = document.getElementById("reason").value.trim();
+
+    if (!employeeName || !employeeEmail || !selectedItem || !size || !reason) {
+      statusMessage.textContent = "Please complete all required fields.";
+      statusMessage.style.color = "red";
+      return;
+    }
+
+    if (selectedItem === "Other" && !otherItemValue) {
+      statusMessage.textContent = "Please enter the other item requested.";
+      statusMessage.style.color = "red";
+      return;
+    }
+
+    const formBody = new URLSearchParams({
+      employeeName: employeeName,
+      employeeEmail: employeeEmail,
+      itemRequested: finalItemRequested,
+      size: size,
+      reason: reason
     });
 
-    const result = await res.json();
+    try {
+      const response = await fetch(SCRIPT_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+        },
+        body: formBody.toString()
+      });
 
-    if (result.success) {
-      message.textContent = "Request submitted successfully.";
-      form.reset();
-      otherItemContainer.classList.add("hidden");
-      otherItemInput.required = false;
-    } else {
-      message.textContent = "Submission failed. Please try again.";
+      const text = await response.text();
+
+      let result;
+      try {
+        result = JSON.parse(text);
+      } catch {
+        throw new Error("Server did not return valid JSON: " + text);
+      }
+
+      if (result.ok) {
+        statusMessage.textContent = "Request submitted successfully.";
+        statusMessage.style.color = "green";
+        form.reset();
+        toggleOtherField();
+      } else {
+        throw new Error(result.error || "Unknown server error");
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      statusMessage.textContent = "Submission failed. Please try again.";
+      statusMessage.style.color = "red";
     }
-  } catch (err) {
-    message.textContent = "Submission failed. Please try again.";
-    console.error(err);
-  }
+  });
 });
