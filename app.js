@@ -1,4 +1,4 @@
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxdywzbqZFbZ-NSEXzJe_npGsrUsGdDE8rrXncfhj26t7FWsHw3yZ9kB5JzpvT1bKtfbg/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyyCXCuRFUxrb8Cbm8ZnTbWZvEgFucAXw4oLGt5i7lF6PwBar_XUuvGXFlsJeegacdElQ/exec";
 
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("uniformForm");
