@@ -8,9 +8,6 @@
   --gray-200: #dbe2ea;
   --gray-100: #f4f7fb;
   --white: #ffffff;
-  --black: #000000;
-  --fire-red: #c62828;
-  --gold: #ffd700;
 }
 
 * {
@@ -25,14 +22,16 @@ body {
 
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
   background:
     linear-gradient(
       to bottom,
-      rgba(8, 20, 38, 0.25) 0%,
-      rgba(8, 20, 38, 0.40) 40%,
-      rgba(8, 20, 38, 0.55) 100%
+      rgba(8,20,38,0.25) 0%,
+      rgba(8,20,38,0.40) 40%,
+      rgba(8,20,38,0.55) 100%
     ),
     url("flag-background.jpg") center center / cover no-repeat fixed;
+
   color: var(--navy-950);
   min-height: 100vh;
   position: relative;
@@ -66,22 +65,22 @@ body {
   margin: 20px auto 0;
   padding: 14px 16px;
   border-radius: 14px;
-  background: rgba(0, 0, 0, 0.92);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
+  background: rgba(255,255,255,0.94);
+  border: 1px solid rgba(19,38,63,0.18);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.22);
 }
 
 .logo-placeholder {
   width: 84px;
   height: 84px;
   border-radius: 50%;
-  border: 2px solid var(--gold);
-  color: var(--gold);
+  border: 2px solid var(--navy-700);
+  color: var(--navy-700);
   font-size: 0.9rem;
   font-weight: 700;
   display: grid;
   place-items: center;
-  background: rgba(255, 255, 255, 0.08);
+  background: linear-gradient(180deg, #f8fbff 0%, #ebf1f8 100%);
 }
 
 .header-text-wrap {
@@ -90,17 +89,11 @@ body {
 
 h1 {
   margin: 0;
-  color: var(--fire-red);
+  color: var(--navy-900);
   font-size: clamp(1.4rem, 3vw, 2.2rem);
-  line-height: 1.15;
+  line-height: 1.2;
   font-weight: 800;
   letter-spacing: 0.02em;
-  text-shadow:
-    -2px -2px 0 var(--gold),
-     2px -2px 0 var(--gold),
-    -2px  2px 0 var(--gold),
-     2px  2px 0 var(--gold),
-     0px  3px 8px rgba(0, 0, 0, 0.55);
 }
 
 .container {
@@ -112,13 +105,13 @@ h1 {
 }
 
 .form-card {
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255,255,255,0.92);
   width: 100%;
   max-width: 560px;
   padding: 30px;
   border-radius: 16px;
-  border: 1px solid rgba(39, 73, 109, 0.18);
-  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.26);
+  border: 1px solid rgba(39,73,109,0.18);
+  box-shadow: 0 18px 34px rgba(0,0,0,0.26);
   backdrop-filter: blur(2px);
 }
 
@@ -161,7 +154,7 @@ select:focus,
 textarea:focus {
   outline: none;
   border-color: var(--navy-700);
-  box-shadow: 0 0 0 3px rgba(39, 73, 109, 0.18);
+  box-shadow: 0 0 0 3px rgba(39,73,109,0.18);
 }
 
 textarea {
@@ -177,7 +170,7 @@ button {
   font-weight: 700;
   letter-spacing: 0.01em;
   transition: transform 0.08s ease, box-shadow 0.2s ease, background 0.2s ease;
-  box-shadow: 0 6px 14px rgba(19, 38, 63, 0.3);
+  box-shadow: 0 6px 14px rgba(19,38,63,0.3);
 }
 
 button:hover {
@@ -201,6 +194,7 @@ button:active {
 }
 
 @media (max-width: 640px) {
+
   body {
     background-attachment: scroll;
   }
@@ -219,7 +213,7 @@ button:active {
   }
 
   h1 {
-    font-size: clamp(1.1rem, 5vw, 1.5rem);
+    font-size: clamp(1.1rem, 5vw, 1.6rem);
   }
 
   .form-card {
