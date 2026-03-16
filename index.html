@@ -1,48 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Uniform Replacement Request</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Uniform Replacement Request</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+  <div class="container">
+    <h1>Uniform Replacement Request</h1>
 
-<div class="container">
+    <form id="uniformForm">
+      <label for="employeeName">Employee Name</label>
+      <input type="text" id="employeeName" required>
 
-<h1>Uniform Replacement Request</h1>
+      <label for="employeeEmail">Employee Email</label>
+      <input type="email" id="employeeEmail" required>
 
-<form id="uniformForm">
+      <label for="itemRequested">Item Requested</label>
+      <select id="itemRequested" required>
+        <option value="">Select Item</option>
+        <option value="Duty Shirt">Duty Shirt</option>
+        <option value="Pants">Pants</option>
+        <option value="Jacket">Jacket</option>
+        <option value="Boots">Boots</option>
+        <option value="Hat">Hat</option>
+        <option value="Gloves">Gloves</option>
+        <option value="Other">Other</option>
+      </select>
 
-<label>Employee Name</label>
-<input type="text" id="employeeName" required>
+      <div id="otherItemContainer" class="hidden">
+        <label for="otherItem">Other Item</label>
+        <input type="text" id="otherItem">
+      </div>
 
-<label>Employee Email</label>
-<input type="email" id="employeeEmail" required>
+      <label for="itemSize">Size</label>
+      <input type="text" id="itemSize" placeholder="Enter size" required>
 
-<label>Item Requested</label>
-<select id="itemRequested" required>
-<option value="">Select Item</option>
-<option>T Shirt</option>
-<option>Pants</option>
-<option>Job shirt</option>
-<option>Boots</option>
-<option>Other</option>
-</select>
+      <label for="reasonForReplacement">Reason for Replacement</label>
+      <textarea id="reasonForReplacement" rows="4" required></textarea>
 
-<label>Reason for Replacement</label>
-<textarea id="reasonForReplacement" rows="4" required></textarea>
+      <button type="submit">Submit Request</button>
 
-<button type="submit">Submit Request</button>
+      <p id="message"></p>
+    </form>
+  </div>
 
-<p id="message"></p>
-
-</form>
-
-</div>
-
-<script src="app.js"></script>
-
+  <script src="app.js"></script>
 </body>
 </html>
