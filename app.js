@@ -2,38 +2,61 @@ const SCRIPT_URL = "PASTE_GOOGLE_SCRIPT_URL_HERE";
 
 const form = document.getElementById("uniformForm");
 const message = document.getElementById("message");
+const itemSelect = document.getElementById("itemRequested");
+const otherItemContainer = document.getElementById("otherItemContainer");
+const otherItemInput = document.getElementById("otherItem");
 
-form.addEventListener("submit", async function(e){
-e.preventDefault();
-
-const data = {
-employeeName: document.getElementById("employeeName").value,
-employeeEmail: document.getElementById("employeeEmail").value,
-itemRequested: document.getElementById("itemRequested").value,
-reasonForReplacement: document.getElementById("reasonForReplacement").value
-};
-
-try{
-
-const res = await fetch(SCRIPT_URL,{
-method:"POST",
-headers:{
-"Content-Type":"application/json"
-},
-body: JSON.stringify(data)
+itemSelect.addEventListener("change", function () {
+  if (this.value === "Other") {
+    otherItemContainer.classList.remove("hidden");
+    otherItemInput.required = true;
+  } else {
+    otherItemContainer.classList.add("hidden");
+    otherItemInput.required = false;
+    otherItemInput.value = "";
+  }
 });
 
-const result = await res.json();
+form.addEventListener("submit", async function (e) {
+  e.preventDefault();
+  message.textContent = "";
 
-if(result.success){
-message.textContent = "Request submitted successfully.";
-form.reset();
-}else{
-message.textContent = "Submission failed. Please try again.";
-}
+  let item = itemSelect.value;
 
-}catch(err){
-message.textContent = "Submission failed. Please try again.";
-}
+  if (item === "Other") {
+    item = otherItemInput.value.trim();
+  }
 
+  const data = {
+    employeeName: document.getElementById("employeeName").value.trim(),
+    employeeEmail: document.getElementById("employeeEmail").value.trim(),
+    itemRequested: item,
+    itemSize: document.getElementById("itemSize").value.trim(),
+    reasonForReplacement: document
+      .getElementById("reasonForReplacement")
+      .value.trim()
+  };
+
+  try {
+    const res = await fetch(SCRIPT_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    });
+
+    const result = await res.json();
+
+    if (result.success) {
+      message.textContent = "Request submitted successfully.";
+      form.reset();
+      otherItemContainer.classList.add("hidden");
+      otherItemInput.required = false;
+    } else {
+      message.textContent = "Submission failed. Please try again.";
+    }
+  } catch (err) {
+    message.textContent = "Submission failed. Please try again.";
+  }
 });
