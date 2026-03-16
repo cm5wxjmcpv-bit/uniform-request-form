@@ -3,37 +3,65 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Martinsville Fire &amp; EMS Uniform Replacement Request</title>
+  <title>Martinsville Fire & EMS Uniform Replacement Request</title>
+
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
+
   <div class="page-overlay"></div>
 
   <main class="page-shell">
-    <header class="site-header" role="banner" aria-label="Martinsville Fire and EMS Uniform Replacement Request Header">
-      <div class="logo-placeholder" aria-hidden="true">LOGO</div>
 
-      <div class="header-text-wrap">
-        <p class="header-kicker">Martinsville Fire &amp; EMS</p>
-        <h1>Martinsville Fire &amp; EMS Uniform Replacement Request</h1>
+    <header class="site-header">
+
+      <div class="logo-placeholder">
+        LOGO
       </div>
 
-      <div class="logo-placeholder" aria-hidden="true">LOGO</div>
+      <div class="header-text-wrap">
+        <h1>
+          Martinsville Fire & EMS Uniform Replacement Request
+        </h1>
+      </div>
+
+      <div class="logo-placeholder">
+        LOGO
+      </div>
+
     </header>
 
-    <section class="container" aria-label="Uniform replacement request form">
+    <section class="container">
+
       <div class="form-card">
+
         <h2>Request Details</h2>
 
         <form id="uniformForm">
+
           <label for="employeeName">Employee Name</label>
-          <input type="text" id="employeeName" name="employeeName" required />
+          <input
+            type="text"
+            id="employeeName"
+            name="employeeName"
+            required
+          />
 
           <label for="employeeEmail">Employee Email</label>
-          <input type="email" id="employeeEmail" name="employeeEmail" required />
+          <input
+            type="email"
+            id="employeeEmail"
+            name="employeeEmail"
+            required
+          />
 
           <label for="itemRequested">Item Requested</label>
-          <select id="itemRequested" name="itemRequested" required>
+          <select
+            id="itemRequested"
+            name="itemRequested"
+            required
+          >
             <option value="">Select an item</option>
             <option value="Shirt">Shirt</option>
             <option value="Pants">Pants</option>
@@ -44,19 +72,36 @@
           </select>
 
           <label for="size">Size</label>
-          <input type="text" id="size" name="size" required />
+          <input
+            type="text"
+            id="size"
+            name="size"
+            required
+          />
 
           <label for="reason">Reason for Replacement</label>
-          <textarea id="reason" name="reason" rows="5" required></textarea>
+          <textarea
+            id="reason"
+            name="reason"
+            rows="5"
+            required
+          ></textarea>
 
-          <button type="submit">Submit Request</button>
+          <button type="submit">
+            Submit Request
+          </button>
+
         </form>
 
-        <p id="statusMessage" aria-live="polite"></p>
+        <p id="statusMessage"></p>
+
       </div>
+
     </section>
+
   </main>
 
   <script src="app.js"></script>
+
 </body>
 </html>
