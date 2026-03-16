@@ -1,0 +1,445 @@
+diff --git a/index.html b/index.html
+index 3b4be68e8c65ecafd58cde9a86cf2ccb99cc3b29..dd707d594f8e21591cfc4b86e8e5c7eba73bf106 100644
+--- a/index.html
++++ b/index.html
+@@ -1,421 +1,34 @@
+ <!doctype html>
+-<html>
++<html lang="en">
+ <head>
+   <meta charset="utf-8">
+-  <meta name="viewport" content="width=device-width,initial-scale=1">
+-  <title>Martinsville CDL Program - Login</title>
+-
+-  <script src="config.js"></script>
+-  <script src="app.js"></script>
+-
+-  <style>
+-    :root{
+-      --navy:#17324d;
+-      --navy-dark:#10263a;
+-      --green:#2f8f4e;
+-      --bg:#eef2f6;
+-      --card:#ffffff;
+-      --text:#1f2937;
+-      --muted:#5b6570;
+-      --border:#d8e0e8;
+-      --shadow:0 12px 32px rgba(16,38,58,.12);
+-      --radius:18px;
+-    }
+-
+-    * { box-sizing: border-box; }
+-
+-    body{
+-      margin:0;
+-      min-height:100vh;
+-      font-family: Inter, system-ui, Arial, sans-serif;
+-      background: linear-gradient(180deg, #f5f7fa 0%, var(--bg) 100%);
+-      color: var(--text);
+-    }
+-
+-    .topbar{
+-      background: linear-gradient(135deg, var(--navy-dark), var(--navy));
+-      border-bottom: 4px solid var(--green);
+-      color: #fff;
+-      box-shadow: 0 4px 18px rgba(0,0,0,.14);
+-    }
+-
+-    .topbar-inner{
+-      max-width: 1120px;
+-      margin: 0 auto;
+-      padding: 18px 20px;
+-      display: flex;
+-      align-items: center;
+-      gap: 16px;
+-    }
+-
+-    .brand-logo{
+-      width: 60px;
+-      height: 60px;
+-      border-radius: 14px;
+-      background: rgba(255,255,255,.10);
+-      border: 1px solid rgba(255,255,255,.18);
+-      display:flex;
+-      align-items:center;
+-      justify-content:center;
+-      overflow:hidden;
+-      flex: 0 0 auto;
+-    }
+-
+-    .brand-logo img{
+-      width:100%;
+-      height:100%;
+-      object-fit:contain;
+-      display:block;
+-    }
+-
+-    .brand-fallback{
+-      font-size: 28px;
+-      font-weight: 800;
+-      color:#fff;
+-      line-height:1;
+-    }
+-
+-    .brand-text h1{
+-      margin:0;
+-      font-size: clamp(1.35rem, 2vw, 2rem);
+-      line-height:1.1;
+-      letter-spacing:.02em;
+-    }
+-
+-    .brand-text p{
+-      margin:4px 0 0;
+-      color: rgba(255,255,255,.86);
+-      font-size: .98rem;
+-      font-weight: 500;
+-    }
+-
+-    .page{
+-      max-width: 1120px;
+-      margin: 0 auto;
+-      padding: 38px 20px 48px;
+-    }
+-
+-    .shell{
+-      display:grid;
+-      grid-template-columns: 1.15fr .85fr;
+-      gap: 28px;
+-      align-items: stretch;
+-    }
+-
+-    .hero-card,
+-    .login-card{
+-      background: var(--card);
+-      border-radius: var(--radius);
+-      box-shadow: var(--shadow);
+-      border: 1px solid rgba(23,50,77,.06);
+-      overflow:hidden;
+-      position:relative;
+-    }
+-
+-    .hero-card{
+-      padding: 34px;
+-      min-height: 470px;
+-      display:flex;
+-      flex-direction:column;
+-      justify-content:center;
+-      isolation:isolate;
+-    }
+-
+-    .hero-card::after{
+-      content:"";
+-      position:absolute;
+-      right:-90px;
+-      bottom:-90px;
+-      width: 420px;
+-      height: 420px;
+-      background: url("logo.png") no-repeat center/contain;
+-      opacity:.05;
+-      pointer-events:none;
+-      z-index:-1;
+-    }
+-
+-    .eyebrow{
+-      display:inline-block;
+-      align-self:flex-start;
+-      padding: 8px 12px;
+-      border-radius:999px;
+-      background:#e7eef5;
+-      color:var(--navy);
+-      font-size:.86rem;
+-      font-weight:800;
+-      margin-bottom:18px;
+-    }
+-
+-    .hero-card h2{
+-      margin:0 0 12px;
+-      font-size: clamp(2rem, 4vw, 3.3rem);
+-      line-height: 1.02;
+-      color: var(--navy-dark);
+-    }
+-
+-    .accent{
+-      width: 88px;
+-      height: 4px;
+-      border-radius:999px;
+-      background: var(--green);
+-      margin: 0 0 18px;
+-    }
+-
+-    .hero-card p{
+-      margin:0;
+-      max-width: 570px;
+-      color: var(--muted);
+-      font-size: 1.05rem;
+-      line-height: 1.65;
+-    }
+-
+-    .hero-points{
+-      margin-top: 24px;
+-      display:grid;
+-      gap:14px;
+-    }
+-
+-    .hero-point{
+-      display:flex;
+-      gap:12px;
+-      align-items:flex-start;
+-      color: var(--text);
+-      font-weight:600;
+-    }
+-
+-    .dot{
+-      width:11px;
+-      height:11px;
+-      margin-top:8px;
+-      border-radius:999px;
+-      background: var(--green);
+-      flex:0 0 auto;
+-      box-shadow: 0 0 0 6px rgba(47,143,78,.12);
+-    }
+-
+-    .login-card{
+-      padding: 30px;
+-      display:flex;
+-      flex-direction:column;
+-      justify-content:center;
+-    }
+-
+-    .login-card h3{
+-      margin:0;
+-      font-size:1.6rem;
+-      color: var(--navy-dark);
+-    }
+-
+-    .login-card .accent{
+-      width:72px;
+-      margin: 12px 0 18px;
+-    }
+-
+-    .sub{
+-      margin:0 0 20px;
+-      color: var(--muted);
+-      line-height:1.55;
+-    }
+-
+-    .field{
+-      display:grid;
+-      gap:8px;
+-      margin-bottom:16px;
+-    }
+-
+-    .field label{
+-      font-weight:800;
+-      color: var(--navy-dark);
+-      font-size:.95rem;
+-    }
+-
+-    .field input{
+-      width:100%;
+-      border:1px solid var(--border);
+-      background:#f9fbfc;
+-      border-radius:12px;
+-      padding:14px 15px;
+-      font-size:16px;
+-      outline:none;
+-      transition:border-color .15s ease, box-shadow .15s ease, background .15s ease;
+-    }
+-
+-    .field input:focus{
+-      border-color:#7aa5c9;
+-      background:#fff;
+-      box-shadow:0 0 0 4px rgba(23,50,77,.08);
+-    }
+-
+-    #btn{
+-      width:100%;
+-      border:0;
+-      border-radius:12px;
+-      background: linear-gradient(135deg, var(--navy-dark), var(--navy));
+-      color:#fff;
+-      padding:14px 16px;
+-      font-size:16px;
+-      font-weight:800;
+-      cursor:pointer;
+-      box-shadow:0 10px 20px rgba(16,38,58,.18);
+-      transition:transform .08s ease, opacity .15s ease;
+-    }
+-
+-    #btn:hover{ opacity:.97; }
+-    #btn:active{ transform:translateY(1px); }
+-
+-    .err{
+-      min-height:22px;
+-      margin-top:14px;
+-      color:#b42318;
+-      font-size:.95rem;
+-      font-weight:700;
+-    }
+-
+-    .footer{
+-      max-width:1120px;
+-      margin:0 auto;
+-      padding: 0 20px 30px;
+-      color: var(--muted);
+-      font-size:.92rem;
+-    }
+-
+-    @media (max-width: 900px){
+-      .shell{
+-        grid-template-columns: 1fr;
+-      }
+-      .hero-card{
+-        min-height:auto;
+-      }
+-    }
+-
+-    @media (max-width: 560px){
+-      .topbar-inner{
+-        align-items:flex-start;
+-      }
+-      .brand-logo{
+-        width:52px;
+-        height:52px;
+-      }
+-      .hero-card,
+-      .login-card{
+-        padding:22px;
+-      }
+-    }
+-  </style>
++  <meta name="viewport" content="width=device-width, initial-scale=1">
++  <title>Uniform Replacement Request</title>
++  <link rel="stylesheet" href="style.css">
+ </head>
+ <body>
++  <main class="container">
++    <h1>Uniform Replacement Request</h1>
+ 
+-  <header class="topbar">
+-    <div class="topbar-inner">
+-      <div class="brand-logo">
+-        <img
+-          src="logo.png"
+-          alt="Martinsville CDL Program logo"
+-          onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=&quot;brand-fallback&quot;>M</div>';">
+-      </div>
+-      <div class="brand-text">
+-        <h1>Martinsville CDL Program</h1>
+-        <p>ELDT Compliance Training</p>
+-      </div>
+-    </div>
+-  </header>
++    <form id="replacement-form" novalidate>
++      <label for="employeeName">Employee Name</label>
++      <input id="employeeName" name="employeeName" type="text" required>
+ 
+-  <main class="page">
+-    <div class="shell">
+-      <section class="hero-card">
+-        <span class="eyebrow">Official Training Portal</span>
+-        <h2>Professional CDL training built for compliance.</h2>
+-        <div class="accent"></div>
+-        <p>
+-          Access your assigned modules, track completion progress, and complete required
+-          ELDT learning through the Martinsville CDL Program.
+-        </p>
++      <label for="employeeEmail">Employee Email</label>
++      <input id="employeeEmail" name="employeeEmail" type="email" required>
+ 
+-        <div class="hero-points">
+-          <div class="hero-point">
+-            <span class="dot"></span>
+-            <div>Secure student login and training access</div>
+-          </div>
+-          <div class="hero-point">
+-            <span class="dot"></span>
+-            <div>Progress tracking by module</div>
+-          </div>
+-          <div class="hero-point">
+-            <span class="dot"></span>
+-            <div>ELDT compliance training workflow</div>
+-          </div>
+-        </div>
+-      </section>
++      <label for="itemRequested">Item Requested</label>
++      <input id="itemRequested" name="itemRequested" type="text" required>
+ 
+-      <section class="login-card">
+-        <h3>Sign in</h3>
+-        <div class="accent"></div>
+-        <p class="sub">
+-          Enter your assigned username and password to access your CDL training modules.
+-        </p>
++      <label for="reason">Reason for Replacement</label>
++      <textarea id="reason" name="reason" rows="4" required></textarea>
+ 
+-        <div class="field">
+-          <label for="u">Username</label>
+-          <input id="u" autocomplete="username">
+-        </div>
++      <button type="submit">Submit Request</button>
++    </form>
+ 
+-        <div class="field">
+-          <label for="p">Password</label>
+-          <input id="p" type="password" autocomplete="current-password">
+-        </div>
+-
+-        <button id="btn">Sign In</button>
+-        <div id="msg" class="err"></div>
+-      </section>
+-    </div>
++    <p id="message" aria-live="polite"></p>
+   </main>
+ 
+-  <div class="footer">
+-    Martinsville CDL Program · ELDT Compliance Training
+-  </div>
+-
+-  <script>
+-    async function doLogin() {
+-      const msg = document.getElementById("msg");
+-      msg.textContent = "";
+-
+-      const u = document.getElementById("u").value.trim();
+-      const p = document.getElementById("p").value;
+-
+-      if (!u || !p) {
+-        msg.textContent = "Enter username and password.";
+-        return;
+-      }
+-
+-      if (typeof login !== "function") {
+-        msg.textContent = "Login system not loaded.";
+-        return;
+-      }
+-
+-      try {
+-        const ok = await login(u, p);
+-
+-        if (!ok) {
+-          msg.textContent = "Invalid username or password.";
+-          return;
+-        }
+-
+-        location.href = "modules.html";
+-
+-      } catch (err) {
+-        msg.textContent = "Login error.";
+-        console.error(err);
+-      }
+-    }
+-
+-    document.getElementById("btn").onclick = doLogin;
+-    document.getElementById("u").addEventListener("keydown", function(e){
+-      if (e.key === "Enter") doLogin();
+-    });
+-    document.getElementById("p").addEventListener("keydown", function(e){
+-      if (e.key === "Enter") doLogin();
+-    });
+-  </script>
+-
++  <script src="app.js"></script>
+ </body>
+ </html>
