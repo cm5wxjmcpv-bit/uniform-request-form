@@ -3,16 +3,16 @@ const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzi5Bl4Rhpfd3O_0WkEL
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("uniformForm");
   const itemRequested = document.getElementById("itemRequested");
-  const otherWrap = document.getElementById("otherItemWrap");
+  const otherItemWrap = document.getElementById("otherItemWrap");
   const otherItem = document.getElementById("otherItem");
   const statusMessage = document.getElementById("statusMessage");
 
   function toggleOtherField() {
     if (itemRequested.value === "Other") {
-      otherWrap.style.display = "block";
+      otherItemWrap.style.display = "block";
       otherItem.required = true;
     } else {
-      otherWrap.style.display = "none";
+      otherItemWrap.style.display = "none";
       otherItem.required = false;
       otherItem.value = "";
     }
@@ -48,30 +48,27 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const formBody = new URLSearchParams({
-      employeeName: employeeName,
-      employeeEmail: employeeEmail,
-      itemRequested: finalItemRequested,
-      size: size,
-      reason: reason
-    });
+    const formData = new URLSearchParams();
+    formData.append("employeeName", employeeName);
+    formData.append("employeeEmail", employeeEmail);
+    formData.append("itemRequested", finalItemRequested);
+    formData.append("size", size);
+    formData.append("reason", reason);
 
     try {
       const response = await fetch(SCRIPT_URL, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
-        },
-        body: formBody.toString()
+        body: formData
       });
 
       const text = await response.text();
+      console.log("Raw server response:", text);
 
       let result;
       try {
         result = JSON.parse(text);
-      } catch {
-        throw new Error("Server did not return valid JSON: " + text);
+      } catch (parseError) {
+        throw new Error("Could not parse server response: " + text);
       }
 
       if (result.ok) {
