@@ -8,6 +8,8 @@
   --gray-200: #dbe2ea;
   --gray-100: #f4f7fb;
   --white: #ffffff;
+  --black: #000000;
+  --fire-red: #c62828;
 }
 
 * {
@@ -63,22 +65,22 @@ body {
   margin: 20px auto 0;
   padding: 14px 16px;
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.94);
-  border: 1px solid rgba(19, 38, 63, 0.18);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
+  background: rgba(0, 0, 0, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
 }
 
 .logo-placeholder {
   width: 84px;
   height: 84px;
   border-radius: 50%;
-  border: 2px solid var(--navy-700);
-  color: var(--navy-700);
+  border: 2px solid #ffffff;
+  color: #ffffff;
   font-size: 0.9rem;
   font-weight: 700;
   display: grid;
   place-items: center;
-  background: linear-gradient(180deg, #f8fbff 0%, #ebf1f8 100%);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .header-text-wrap {
@@ -86,19 +88,22 @@ body {
 }
 
 .header-kicker {
-  margin: 0 0 4px;
-  color: var(--gray-700);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  font-size: 0.78rem;
-  text-transform: uppercase;
+  display: none;
 }
 
 h1 {
   margin: 0;
-  color: var(--navy-900);
-  font-size: clamp(1rem, 1.9vw, 1.45rem);
-  line-height: 1.25;
+  color: var(--fire-red);
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  line-height: 1.15;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-shadow:
+    -1px -1px 0 #ffffff,
+     1px -1px 0 #ffffff,
+    -1px  1px 0 #ffffff,
+     1px  1px 0 #ffffff,
+     0px  2px 6px rgba(0, 0, 0, 0.45);
 }
 
 .container {
@@ -214,6 +219,10 @@ button:active {
     width: 58px;
     height: 58px;
     font-size: 0.68rem;
+  }
+
+  h1 {
+    font-size: clamp(1.1rem, 5vw, 1.5rem);
   }
 
   .form-card {
