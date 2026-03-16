@@ -1,62 +1,81 @@
-diff --git a/index.html b/index.html
-index 6c31b503f4344d38aaa4b58a28b98ce7e0dc7bc9..6a82a48e7bb77cee51a9d7128e14f1fb65ee8295 100644
---- a/index.html
-+++ b/index.html
-@@ -20,42 +20,57 @@
-       <div class="logo-placeholder" aria-hidden="true">LOGO</div>
-     </header>
- 
-     <section class="container" aria-label="Uniform replacement request form">
-       <div class="form-card">
-         <h2>Request Details</h2>
- 
-         <form id="uniformForm">
-           <label for="employeeName">Employee Name</label>
-           <input type="text" id="employeeName" name="employeeName" required />
- 
-           <label for="employeeEmail">Employee Email</label>
-           <input type="email" id="employeeEmail" name="employeeEmail" required />
- 
-           <label for="itemRequested">Item Requested</label>
-           <select id="itemRequested" name="itemRequested" required>
-             <option value="">Select an item</option>
-             <option value="Shirt">Shirt</option>
-             <option value="Pants">Pants</option>
-             <option value="Jacket">Jacket</option>
-             <option value="Hat">Hat</option>
-             <option value="Boots">Boots</option>
-             <option value="Other">Other</option>
-           </select>
- 
-+          <label for="quantity">Quantity</label>
-+          <select id="quantity" name="quantity" required>
-+            <option value="">Select quantity</option>
-+            <option value="1">1</option>
-+            <option value="2">2</option>
-+            <option value="3">3</option>
-+            <option value="4">4</option>
-+            <option value="5">5</option>
-+            <option value="6">6</option>
-+            <option value="7">7</option>
-+            <option value="8">8</option>
-+            <option value="9">9</option>
-+            <option value="10">10</option>
-+          </select>
-+
-           <label for="size">Size</label>
-           <input type="text" id="size" name="size" required />
- 
-           <label for="reason">Reason for Replacement</label>
-           <textarea id="reason" name="reason" rows="5" required></textarea>
- 
-           <button type="submit">Submit Request</button>
-         </form>
- 
-         <p id="statusMessage" aria-live="polite"></p>
-       </div>
-     </section>
-   </main>
- 
-   <script src="app.js"></script>
- </body>
- </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Uniform Replacement Request</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+<main>
+
+<header>
+  <div class="logo-placeholder" aria-hidden="true">LOGO</div>
+</header>
+
+<section class="container" aria-label="Uniform replacement request form">
+  <div class="form-card">
+    <h2>Request Details</h2>
+
+    <form id="uniformForm">
+
+      <label for="employeeName">Employee Name</label>
+      <input type="text" id="employeeName" name="employeeName" required />
+
+      <label for="employeeEmail">Employee Email</label>
+      <input type="email" id="employeeEmail" name="employeeEmail" required />
+
+      <label for="itemRequested">Item Requested</label>
+      <select id="itemRequested" name="itemRequested" required>
+        <option value="">Select an item</option>
+        <option value="Shirt">Shirt</option>
+        <option value="Pants">Pants</option>
+        <option value="Jacket">Jacket</option>
+        <option value="Hat">Hat</option>
+        <option value="Boots">Boots</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <div id="otherItemWrap" style="display:none;">
+        <label for="otherItem">Other Item</label>
+        <input type="text" id="otherItem" name="otherItem" />
+      </div>
+
+      <label for="quantity">Quantity</label>
+      <select id="quantity" name="quantity" required>
+        <option value="">Select quantity</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
+
+      <label for="size">Size</label>
+      <input type="text" id="size" name="size" required />
+
+      <label for="reason">Reason for Replacement</label>
+      <textarea id="reason" name="reason" rows="5" required></textarea>
+
+      <button type="submit">Submit Request</button>
+
+    </form>
+
+    <p id="statusMessage" aria-live="polite"></p>
+
+  </div>
+</section>
+
+</main>
+
+<script src="app.js"></script>
+
+</body>
+</html>
