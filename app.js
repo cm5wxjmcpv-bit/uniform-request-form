@@ -22,7 +22,6 @@ form.addEventListener("submit", async function (e) {
   message.textContent = "";
 
   let item = itemSelect.value;
-
   if (item === "Other") {
     item = otherItemInput.value.trim();
   }
@@ -32,18 +31,15 @@ form.addEventListener("submit", async function (e) {
     employeeEmail: document.getElementById("employeeEmail").value.trim(),
     itemRequested: item,
     itemSize: document.getElementById("itemSize").value.trim(),
-    reasonForReplacement: document
-      .getElementById("reasonForReplacement")
-      .value.trim()
+    reasonForReplacement: document.getElementById("reasonForReplacement").value.trim()
   };
 
   try {
+    const params = new URLSearchParams(data);
+
     const res = await fetch(SCRIPT_URL, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
+      body: params
     });
 
     const result = await res.json();
@@ -58,5 +54,6 @@ form.addEventListener("submit", async function (e) {
     }
   } catch (err) {
     message.textContent = "Submission failed. Please try again.";
+    console.error(err);
   }
 });
