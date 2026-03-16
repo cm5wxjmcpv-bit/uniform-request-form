@@ -3,48 +3,59 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Uniform Replacement Request</title>
+  <title>Martinsville Fire &amp; EMS Uniform Replacement Request</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <div class="form-card">
-      <h1>Uniform Replacement Request</h1>
-      <form id="uniformForm">
-        <label for="employeeName">Employee Name</label>
-        <input type="text" id="employeeName" name="employeeName" required />
+  <div class="page-overlay"></div>
 
-        <label for="employeeEmail">Employee Email</label>
-        <input type="email" id="employeeEmail" name="employeeEmail" required />
+  <main class="page-shell">
+    <header class="site-header" role="banner" aria-label="Martinsville Fire and EMS Uniform Replacement Request Header">
+      <div class="logo-placeholder" aria-hidden="true">LOGO</div>
 
-        <label for="itemRequested">Item Requested</label>
-        <select id="itemRequested" name="itemRequested" required>
-          <option value="">Select an item</option>
-          <option value="Shirt">Shirt</option>
-          <option value="Pants">Pants</option>
-          <option value="Jacket">Jacket</option>
-          <option value="Hat">Hat</option>
-          <option value="Boots">Boots</option>
-          <option value="Other">Other</option>
-        </select>
+      <div class="header-text-wrap">
+        <p class="header-kicker">Martinsville Fire &amp; EMS</p>
+        <h1>Martinsville Fire &amp; EMS Uniform Replacement Request</h1>
+      </div>
 
-        <div id="otherItemWrap" style="display:none;">
-          <label for="otherItem">Other Item</label>
-          <input type="text" id="otherItem" name="otherItem" />
-        </div>
+      <div class="logo-placeholder" aria-hidden="true">LOGO</div>
+    </header>
 
-        <label for="size">Size</label>
-        <input type="text" id="size" name="size" required />
+    <section class="container" aria-label="Uniform replacement request form">
+      <div class="form-card">
+        <h2>Request Details</h2>
 
-        <label for="reason">Reason for Replacement</label>
-        <textarea id="reason" name="reason" rows="5" required></textarea>
+        <form id="uniformForm">
+          <label for="employeeName">Employee Name</label>
+          <input type="text" id="employeeName" name="employeeName" required />
 
-        <button type="submit">Submit Request</button>
-      </form>
+          <label for="employeeEmail">Employee Email</label>
+          <input type="email" id="employeeEmail" name="employeeEmail" required />
 
-      <p id="statusMessage"></p>
-    </div>
-  </div>
+          <label for="itemRequested">Item Requested</label>
+          <select id="itemRequested" name="itemRequested" required>
+            <option value="">Select an item</option>
+            <option value="Shirt">Shirt</option>
+            <option value="Pants">Pants</option>
+            <option value="Jacket">Jacket</option>
+            <option value="Hat">Hat</option>
+            <option value="Boots">Boots</option>
+            <option value="Other">Other</option>
+          </select>
+
+          <label for="size">Size</label>
+          <input type="text" id="size" name="size" required />
+
+          <label for="reason">Reason for Replacement</label>
+          <textarea id="reason" name="reason" rows="5" required></textarea>
+
+          <button type="submit">Submit Request</button>
+        </form>
+
+        <p id="statusMessage" aria-live="polite"></p>
+      </div>
+    </section>
+  </main>
 
   <script src="app.js"></script>
 </body>
