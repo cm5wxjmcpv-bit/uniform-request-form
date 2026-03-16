@@ -1,56 +1,80 @@
-body{
-font-family: Arial, sans-serif;
-background:#f4f6f8;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-margin:0;
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-.container{
-background:white;
-padding:30px;
-width:350px;
-border-radius:8px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
+.container {
+  background: #ffffff;
+  padding: 30px;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
 }
 
-h1{
-text-align:center;
-margin-bottom:20px;
+h1 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 20px;
 }
 
-label{
-display:block;
-margin-top:10px;
-font-weight:bold;
+label {
+  display: block;
+  margin-top: 12px;
+  margin-bottom: 5px;
+  font-weight: bold;
 }
 
-input, select, textarea{
-width:100%;
-padding:8px;
-margin-top:5px;
-border:1px solid #ccc;
-border-radius:4px;
+input,
+select,
+textarea,
+button {
+  width: 100%;
+  box-sizing: border-box;
 }
 
-button{
-margin-top:20px;
-width:100%;
-padding:10px;
-background:#2c7be5;
-color:white;
-border:none;
-border-radius:4px;
-cursor:pointer;
+input,
+select,
+textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
 }
 
-button:hover{
-background:#1a68d1;
+textarea {
+  resize: vertical;
 }
 
-#message{
-margin-top:10px;
-text-align:center;
+button {
+  margin-top: 20px;
+  padding: 12px;
+  background: #2c7be5;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background: #1a68d1;
+}
+
+#message {
+  margin-top: 12px;
+  text-align: center;
+  min-height: 20px;
+}
+
+.hidden {
+  display: none;
 }
