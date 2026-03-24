@@ -23,6 +23,7 @@ body {
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 
+  /* lighter overlay so the flag is more visible */
   background:
     linear-gradient(
       to bottom,
@@ -59,10 +60,10 @@ body {
 /* HEADER */
 
 .site-header {
-  display: grid;
-  grid-template-columns: 84px 1fr 84px;
+  display: flex;
   align-items: center;
-  gap: 14px;
+  justify-content: center;
+  gap: 20px;
   width: min(980px, calc(100% - 32px));
   margin: 20px auto 0;
   padding: 16px 18px;
@@ -85,20 +86,24 @@ body {
 
 .left-logo {
   background: transparent;
+  flex: 0 0 auto;
 }
 
 .right-logo {
   background: transparent;
+  flex: 0 0 auto;
 }
 
 .header-text-wrap {
   text-align: center;
+  flex: 1;
 }
 
 h1 {
   margin: 0;
   color: var(--navy-900);
 
+  /* bigger header text */
   font-size: clamp(1.8rem, 3.5vw, 2.6rem);
 
   line-height: 1.2;
@@ -258,8 +263,8 @@ button:active {
   }
 
   .site-header {
-    grid-template-columns: 58px 1fr 58px;
-    gap: 8px;
+    flex-direction: column;
+    gap: 10px;
     padding: 12px 12px;
     width: min(980px, calc(100% - 20px));
   }
