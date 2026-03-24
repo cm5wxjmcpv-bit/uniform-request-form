@@ -23,7 +23,6 @@ body {
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 
-  /* lighter overlay so the flag is more visible */
   background:
     linear-gradient(
       to bottom,
@@ -77,8 +76,8 @@ body {
 }
 
 .header-logo {
-  width: 84px;
-  height: 84px;
+  height: 140px;
+  width: auto;
   object-fit: contain;
   display: block;
   filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.18));
@@ -100,7 +99,6 @@ h1 {
   margin: 0;
   color: var(--navy-900);
 
-  /* bigger header text */
   font-size: clamp(1.8rem, 3.5vw, 2.6rem);
 
   line-height: 1.2;
@@ -267,8 +265,8 @@ button:active {
   }
 
   .header-logo {
-    width: 58px;
-    height: 58px;
+    height: 90px;
+    width: auto;
   }
 
   h1 {
